@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theming_app_templete/core/language/app_localizations_setup.dart';
 import 'package:theming_app_templete/core/themes/app_theme.dart';
-import 'package:theming_app_templete/settings_state.dart';
-
-import 'settings_cubit.dart';
-import 'settings_screen.dart';
+import 'package:theming_app_templete/cubit/settings_cubit.dart';
+import 'package:theming_app_templete/cubit/settings_state.dart';
+import 'package:theming_app_templete/pages/settings_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,16 +20,21 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           final cubit = context.read<SettingsCubit>();
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: _getThemeMode(state.themeMode),
-            locale: cubit.getLocaleFromState(state.locale),
-            supportedLocales: AppLocalSetup.supportedLocales,
-            localeResolutionCallback: AppLocalSetup.localeResolutionCallback,
-            localizationsDelegates: AppLocalSetup.localesDelegates,
-            home: const SettingsScreen(),
+          return BlocBuilder<SettingsCubit, SettingsState>(
+            builder: (context, state) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.getTheme(state.colors, state.themeMode),
+                darkTheme: AppTheme.getTheme(state.colors, state.themeMode),
+                themeMode: _getThemeMode(state.themeMode),
+                locale: cubit.getLocaleFromState(state.locale),
+                supportedLocales: AppLocalSetup.supportedLocales,
+                localeResolutionCallback:
+                    AppLocalSetup.localeResolutionCallback,
+                localizationsDelegates: AppLocalSetup.localesDelegates,
+                home: const SettingsScreen(),
+              );
+            },
           );
         },
       ),
