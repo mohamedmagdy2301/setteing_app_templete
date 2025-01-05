@@ -10,14 +10,14 @@ enum ThemeModeState { light, dark, system }
 
 enum LocalizationState { ar, en, system }
 
-enum ColorsPalleteState { orange, blue, green, red }
+enum ColorsPalleteState { orange, blue, green, red, yellow }
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit()
       : super(SettingsState(
           themeMode: ThemeModeState.system,
           locale: LocalizationState.system,
-          colors: ColorsPalleteState.blue,
+          colors: ColorsPalleteState.orange,
         )) {
     loadSettings();
   }
@@ -52,6 +52,10 @@ class SettingsCubit extends Cubit<SettingsState> {
         return ColorsPalleteState.red;
       case 'green':
         return ColorsPalleteState.green;
+      case 'yellow':
+        return ColorsPalleteState.yellow;
+      case 'orange':
+        return ColorsPalleteState.orange;
       default:
         return ColorsPalleteState.orange;
     }

@@ -26,7 +26,6 @@ class AppColorSchemes {
                 textColor: ColorsDark.textColor,
                 brightness: Brightness.dark,
               );
-
       case ColorsPalleteState.blue:
         return themeMode == ThemeModeState.light
             ? _buildColorScheme(
@@ -81,6 +80,24 @@ class AppColorSchemes {
                 textColor: ColorsDarkRed.textColor,
                 brightness: Brightness.dark,
               );
+      case ColorsPalleteState.yellow:
+        return themeMode == ThemeModeState.light
+            ? _buildColorScheme(
+                primary: ColorsLightIndigo.primaryColor,
+                secondary: ColorsLightIndigo.accentColor,
+                surface: ColorsLightIndigo.backgroundColor,
+                error: ColorsLightIndigo.errorColor,
+                textColor: ColorsLightIndigo.textColor,
+                brightness: Brightness.light,
+              )
+            : _buildColorScheme(
+                primary: ColorsDarkIndigo.primaryColor,
+                secondary: ColorsDarkIndigo.accentColor,
+                surface: ColorsDarkIndigo.backgroundColor,
+                error: ColorsDarkIndigo.errorColor,
+                textColor: ColorsDarkIndigo.textColor,
+                brightness: Brightness.dark,
+              );
     }
   }
 
@@ -94,7 +111,9 @@ class AppColorSchemes {
           return MyColors.darkGreen;
         case ColorsPalleteState.red:
           return MyColors.darkRed;
-        case ColorsPalleteState.orange:
+        case ColorsPalleteState.yellow:
+          return MyColors.darkYellow;
+        default:
           return MyColors.dark;
       }
     }
@@ -105,7 +124,9 @@ class AppColorSchemes {
         return MyColors.lightGreen;
       case ColorsPalleteState.red:
         return MyColors.lightRed;
-      case ColorsPalleteState.orange:
+      case ColorsPalleteState.yellow:
+        return MyColors.lightYellow;
+      default:
         return MyColors.light;
     }
   }
