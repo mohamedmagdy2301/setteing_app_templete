@@ -22,4 +22,5 @@ List<Color> colorPalette = [
   Colors.green,
   Colors.red,
   Colors.indigo,
+  Colors.purple, // Add your new color
 ];

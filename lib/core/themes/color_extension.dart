@@ -29,6 +29,7 @@ const themeExtensions = {
     ColorsPalleteState.green: MyColors(primaryColor: Colors.green),
     ColorsPalleteState.red: MyColors(primaryColor: Colors.red),
     ColorsPalleteState.indigo: MyColors(primaryColor: Colors.indigo),
+    ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
   },
   ThemeModeState.dark: {
     ColorsPalleteState.orange: MyColors(primaryColor: Colors.orange),
@@ -36,5 +37,6 @@ const themeExtensions = {
     ColorsPalleteState.green: MyColors(primaryColor: Colors.green),
     ColorsPalleteState.red: MyColors(primaryColor: Colors.red),
     ColorsPalleteState.indigo: MyColors(primaryColor: Colors.indigo),
+    ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
   },
 };

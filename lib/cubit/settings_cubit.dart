@@ -10,7 +10,7 @@ enum ThemeModeState { light, dark, system }
 
 enum LocalizationState { ar, en, system }
 
-enum ColorsPalleteState { orange, blue, green, red, indigo }
+enum ColorsPalleteState { orange, blue, green, red, indigo, purple }
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit()
@@ -56,6 +56,8 @@ class SettingsCubit extends Cubit<SettingsState> {
         return ColorsPalleteState.indigo;
       case 'orange':
         return ColorsPalleteState.orange;
+      case 'purple':
+        return ColorsPalleteState.purple;
       default:
         return ColorsPalleteState.orange;
     }

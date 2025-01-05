@@ -38,4 +38,11 @@ const darkPalettes = {
     text: Color(0xFFFFCDD2),
     error: Color(0xFFEF5350),
   ),
+  ColorsPalleteState.purple: ThemePaletteModel(
+    primary: Colors.purple,
+    secondary: Colors.purpleAccent,
+    background: Color(0xFF121212), // Adjust as needed
+    text: Color(0xFFD1C4E9), // Adjust as needed
+    error: Color(0xFFEF5350), // Adjust as needed
+  ),
 };

@@ -38,4 +38,11 @@ const lightPalettes = {
     text: Color(0xFF2D2D2D),
     error: Color(0xFFE53935),
   ),
+  ColorsPalleteState.purple: ThemePaletteModel(
+    primary: Colors.purple,
+    secondary: Colors.purpleAccent,
+    background: Color(0xFFECECEC), // Adjust as needed
+    text: Color(0xFF2D2D2D), // Adjust as needed
+    error: Color(0xFFE53935), // Adjust as needed
+  ),
 };
