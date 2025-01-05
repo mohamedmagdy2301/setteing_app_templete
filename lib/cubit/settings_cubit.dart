@@ -8,7 +8,7 @@ import 'package:theming_app_templete/cubit/settings_state.dart';
 
 enum ThemeModeState { light, dark, system }
 
-enum LocaleState { ar, en, system }
+enum LocalizationState { ar, en, system }
 
 enum ColorsPalleteState { orange, blue, green, red }
 
@@ -16,7 +16,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit()
       : super(SettingsState(
           themeMode: ThemeModeState.system,
-          locale: LocaleState.system,
+          locale: LocalizationState.system,
           colors: ColorsPalleteState.blue,
         )) {
     loadSettings();
@@ -70,7 +70,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     ));
   }
 
-  Future<void> setLocale(LocaleState locale) async {
+  Future<void> setLocale(LocalizationState locale) async {
     await _setPreference(keyLocale, _getLocaleStateToString(locale));
     emit(SettingsState(
       themeMode: state.themeMode,
@@ -99,18 +99,18 @@ class SettingsCubit extends Cubit<SettingsState> {
     return state.toString().split('.').last;
   }
 
-  LocaleState _getLocaleStateFromString(String locale) {
+  LocalizationState _getLocaleStateFromString(String locale) {
     switch (locale) {
       case 'ar':
-        return LocaleState.ar;
+        return LocalizationState.ar;
       case 'en':
-        return LocaleState.en;
+        return LocalizationState.en;
       default:
-        return LocaleState.system;
+        return LocalizationState.system;
     }
   }
 
-  String _getLocaleStateToString(LocaleState state) {
+  String _getLocaleStateToString(LocalizationState state) {
     return state.toString().split('.').last;
   }
 
@@ -125,13 +125,13 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  Locale getLocaleFromState(LocaleState state) {
+  Locale getLocaleFromState(LocalizationState state) {
     switch (state) {
-      case LocaleState.ar:
+      case LocalizationState.ar:
         return const Locale('ar');
-      case LocaleState.en:
+      case LocalizationState.en:
         return const Locale('en');
-      case LocaleState.system:
+      case LocalizationState.system:
         return _getSystemLocale();
     }
   }

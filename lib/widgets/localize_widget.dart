@@ -16,21 +16,21 @@ class LocalizeWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BuildSectionTitle(title: LangKeys.language),
-        BuildRadioListTile<LocaleState>(
+        BuildRadioListTile<LocalizationState>(
           labelKey: LangKeys.english,
-          value: LocaleState.en,
+          value: LocalizationState.en,
           groupValue: state.locale,
           onChanged: (locale) => cubit.setLocale(locale!),
         ),
-        BuildRadioListTile<LocaleState>(
+        BuildRadioListTile<LocalizationState>(
           labelKey: LangKeys.arabic,
-          value: LocaleState.ar,
+          value: LocalizationState.ar,
           groupValue: state.locale,
           onChanged: (locale) => cubit.setLocale(locale!),
         ),
-        BuildRadioListTile<LocaleState>(
+        BuildRadioListTile<LocalizationState>(
           labelKey: LangKeys.systemDefault,
-          value: LocaleState.system,
+          value: LocalizationState.system,
           groupValue: state.locale,
           onChanged: (locale) => cubit.setLocale(locale!),
         ),
