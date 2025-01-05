@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:theming_app_templete/core/themes/colors_dark.dart';
-import 'package:theming_app_templete/core/themes/colors_light.dart';
+import 'package:theming_app_templete/cubit/settings_cubit.dart';
 
 class MyColors extends ThemeExtension<MyColors> {
   final Color? primaryColor;
 
-  const MyColors({
-    required this.primaryColor,
-  });
+  const MyColors({required this.primaryColor});
 
   @override
   ThemeExtension<MyColors> copyWith({Color? primaryColor}) {
@@ -18,39 +15,36 @@ class MyColors extends ThemeExtension<MyColors> {
 
   @override
   ThemeExtension<MyColors> lerp(ThemeExtension<MyColors>? other, double t) {
-    if (other is! MyColors) {
-      return this;
-    }
+    if (other is! MyColors) return this;
     return MyColors(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
     );
   }
-
-  // Light Theme Extensions
-  static const MyColors light = MyColors(
-    primaryColor: ColorsLight.primaryColor,
-  );
-  static const MyColors lightBlue = MyColors(
-    primaryColor: ColorsLightBlue.primaryColor,
-  );
-  static const MyColors lightGreen = MyColors(
-    primaryColor: ColorsLightGreen.primaryColor,
-  );
-  static const MyColors lightRed = MyColors(
-    primaryColor: ColorsLightRed.primaryColor,
-  );
-
-  // Dark Theme Extensions
-  static const MyColors dark = MyColors(
-    primaryColor: ColorsDark.primaryColor,
-  );
-  static const MyColors darkBlue = MyColors(
-    primaryColor: ColorsDarkBlue.primaryColor,
-  );
-  static const MyColors darkGreen = MyColors(
-    primaryColor: ColorsDarkGreen.primaryColor,
-  );
-  static const MyColors darkRed = MyColors(
-    primaryColor: ColorsDarkRed.primaryColor,
-  );
 }
+
+const Map<ThemeModeState, Map<ColorsPalleteState, MyColors>> themeExtensions = {
+  ThemeModeState.light: {
+    ColorsPalleteState.orange: MyColors(primaryColor: Colors.orange),
+    ColorsPalleteState.blue: MyColors(primaryColor: Colors.blue),
+    ColorsPalleteState.green: MyColors(primaryColor: Colors.green),
+    ColorsPalleteState.red: MyColors(primaryColor: Colors.red),
+    ColorsPalleteState.indigo: MyColors(primaryColor: Colors.indigo),
+    ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
+  },
+  ThemeModeState.dark: {
+    ColorsPalleteState.orange: MyColors(primaryColor: Colors.orange),
+    ColorsPalleteState.blue: MyColors(primaryColor: Colors.blue),
+    ColorsPalleteState.green: MyColors(primaryColor: Colors.green),
+    ColorsPalleteState.red: MyColors(primaryColor: Colors.red),
+    ColorsPalleteState.indigo: MyColors(primaryColor: Colors.indigo),
+    ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
+  },
+  ThemeModeState.system: {
+    ColorsPalleteState.orange: MyColors(primaryColor: Colors.orange),
+    ColorsPalleteState.blue: MyColors(primaryColor: Colors.blue),
+    ColorsPalleteState.green: MyColors(primaryColor: Colors.green),
+    ColorsPalleteState.red: MyColors(primaryColor: Colors.red),
+    ColorsPalleteState.indigo: MyColors(primaryColor: Colors.indigo),
+    ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
+  },
+};

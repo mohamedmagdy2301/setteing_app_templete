@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:theming_app_templete/core/themes/list_colors.dart';
+import 'package:theming_app_templete/core/themes/theme_palette_model.dart';
 import 'package:theming_app_templete/cubit/settings_cubit.dart';
 
 class BuildCircleColorWidget extends StatelessWidget {
@@ -22,7 +22,7 @@ class BuildCircleColorWidget extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: state.colors == ColorsPalleteState.values[index]
-              ? Border.all(color: color[index], width: 3)
+              ? Border.all(color: colorPalette[index], width: 3)
               : null,
         ),
         child: Container(
@@ -30,7 +30,7 @@ class BuildCircleColorWidget extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: color[index],
+            color: colorPalette[index],
           ),
         ),
       ),

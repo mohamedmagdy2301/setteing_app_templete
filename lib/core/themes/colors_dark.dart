@@ -1,33 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:theming_app_templete/core/themes/theme_palette_model.dart';
+import 'package:theming_app_templete/cubit/settings_cubit.dart';
 
-class ColorsDark {
-  static const Color primaryColor = Color.fromARGB(255, 188, 120, 2);
-  static const Color accentColor = Color.fromARGB(255, 150, 100, 0);
-  static const Color backgroundColor = Color(0xFF121212);
-  static const Color textColor = Color(0xFFBBDEFB);
-  static const Color errorColor = Color(0xFFEF5350);
-}
-
-class ColorsDarkBlue {
-  static const Color primaryColor = Color(0xFF0D47A1);
-  static const Color accentColor = Color(0xFF1976D2);
-  static const Color backgroundColor = Color(0xFF121212);
-  static const Color textColor = Color(0xFFBBDEFB);
-  static const Color errorColor = Color(0xFFEF5350);
-}
-
-class ColorsDarkGreen {
-  static const Color primaryColor = Color(0xFF1B5E20);
-  static const Color accentColor = Color(0xFF388E3C);
-  static const Color backgroundColor = Color(0xFF121212);
-  static const Color textColor = Color(0xFFC8E6C9);
-  static const Color errorColor = Color(0xFFEF5350);
-}
-
-class ColorsDarkRed {
-  static const Color primaryColor = Color(0xFFB71C1C);
-  static const Color accentColor = Color(0xFFD32F2F);
-  static const Color backgroundColor = Color(0xFF121212);
-  static const Color textColor = Color(0xFFFFCDD2);
-  static const Color errorColor = Color(0xFFEF5350);
-}
+const darkPalettes = {
+  ColorsPalleteState.orange: ThemePaletteModel(
+    primary: Colors.orange,
+    secondary: Colors.orangeAccent,
+    background: Color(0xFF121212),
+    text: Color(0xFFBBDEFB),
+    error: Color(0xFFEF5350),
+  ),
+  ColorsPalleteState.blue: ThemePaletteModel(
+    primary: Colors.blue,
+    secondary: Colors.blueAccent,
+    background: Color(0xFF121212),
+    text: Color(0xFFBBDEFB),
+    error: Color(0xFFEF5350),
+  ),
+  ColorsPalleteState.green: ThemePaletteModel(
+    primary: Colors.green,
+    secondary: Colors.greenAccent,
+    background: Color(0xFF121212),
+    text: Color(0xFFC8E6C9),
+    error: Color(0xFFEF5350),
+  ),
+  ColorsPalleteState.red: ThemePaletteModel(
+    primary: Colors.red,
+    secondary: Colors.redAccent,
+    background: Color(0xFF121212),
+    text: Color(0xFFFFCDD2),
+    error: Color(0xFFEF5350),
+  ),
+  ColorsPalleteState.indigo: ThemePaletteModel(
+    primary: Colors.indigo,
+    secondary: Colors.indigoAccent,
+    background: Color(0xFF121212),
+    text: Color(0xFFFFCDD2),
+    error: Color(0xFFEF5350),
+  ),
+  ColorsPalleteState.purple: ThemePaletteModel(
+    primary: Colors.purple,
+    secondary: Colors.purpleAccent,
+    background: Color(0xFF121212), // Adjust as needed
+    text: Color(0xFFD1C4E9), // Adjust as needed
+    error: Color(0xFFEF5350), // Adjust as needed
+  ),
+};
