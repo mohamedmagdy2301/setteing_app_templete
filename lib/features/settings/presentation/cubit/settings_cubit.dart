@@ -9,7 +9,7 @@ enum ThemeModeState { light, dark, system }
 
 enum LocaleState { ar, en, system }
 
-enum ColorsState { orange, blue, red, green }
+enum ColorsState { orange, blue, green, red }
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit()
@@ -57,16 +57,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   String _getColorsStateToString(ColorsState state) {
-    switch (state) {
-      case ColorsState.blue:
-        return 'blue';
-      case ColorsState.red:
-        return 'red';
-      case ColorsState.green:
-        return 'green';
-      case ColorsState.orange:
-        return 'orange';
-    }
+    return state.toString().split('.').last;
   }
 
   Future<void> setTheme(ThemeModeState themeMode) async {
@@ -98,21 +89,13 @@ class SettingsCubit extends Cubit<SettingsState> {
         return ThemeModeState.light;
       case 'dark':
         return ThemeModeState.dark;
-      case 'system':
       default:
         return ThemeModeState.system;
     }
   }
 
   String _getThemeStateToString(ThemeModeState state) {
-    switch (state) {
-      case ThemeModeState.light:
-        return 'light';
-      case ThemeModeState.dark:
-        return 'dark';
-      case ThemeModeState.system:
-        return 'system';
-    }
+    return state.toString().split('.').last; // Simplified string conversion
   }
 
   LocaleState _getLocaleStateFromString(String locale) {
@@ -121,21 +104,13 @@ class SettingsCubit extends Cubit<SettingsState> {
         return LocaleState.ar;
       case 'en':
         return LocaleState.en;
-      case 'system':
       default:
         return LocaleState.system;
     }
   }
 
   String _getLocaleStateToString(LocaleState state) {
-    switch (state) {
-      case LocaleState.ar:
-        return 'ar';
-      case LocaleState.en:
-        return 'en';
-      case LocaleState.system:
-        return 'system';
-    }
+    return state.toString().split('.').last; // Simplified string conversion
   }
 
   Locale _getSystemLocale() {

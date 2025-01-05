@@ -4,19 +4,15 @@ import 'package:theming_app_templete/core/widgets/build_cricle_color_widget.dart
 import 'package:theming_app_templete/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:theming_app_templete/features/settings/presentation/cubit/settings_state.dart';
 
-class ColorPaletteWidget extends StatefulWidget {
-  const ColorPaletteWidget(
-      {super.key, required this.cubit, required this.state});
+class ColorPaletteWidget extends StatelessWidget {
+  const ColorPaletteWidget({
+    super.key,
+    required this.cubit,
+    required this.state,
+  });
 
   final SettingsCubit cubit;
   final SettingsState state;
-
-  @override
-  State<ColorPaletteWidget> createState() => _ColorPaletteWidgetState();
-}
-
-class _ColorPaletteWidgetState extends State<ColorPaletteWidget> {
-  int currentSelectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,29 +23,13 @@ class _ColorPaletteWidgetState extends State<ColorPaletteWidget> {
         shrinkWrap: true,
         itemCount: color.length,
         scrollDirection: Axis.horizontal,
-        separatorBuilder: (context, index) => const SizedBox(width: 30),
+        separatorBuilder: (context, index) => const SizedBox(width: 20),
         itemBuilder: (context, index) {
           return BuildCircleColorWidget(
             color: color[index],
-            isSelected: currentSelectedIndex == index,
+            isSelected: state.colors == ColorsState.values[index],
             onTap: () {
-              setState(() {
-                currentSelectedIndex = index;
-              });
-              switch (index) {
-                case 0:
-                  widget.cubit.setColors(ColorsState.orange);
-                  break;
-                case 1:
-                  widget.cubit.setColors(ColorsState.blue);
-                  break;
-                case 2:
-                  widget.cubit.setColors(ColorsState.green);
-                  break;
-                case 3:
-                  widget.cubit.setColors(ColorsState.red);
-                  break;
-              }
+              cubit.setColors(ColorsState.values[index]);
             },
           );
         },

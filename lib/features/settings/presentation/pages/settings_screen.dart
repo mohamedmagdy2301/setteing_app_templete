@@ -16,6 +16,7 @@ class SettingsScreen extends StatelessWidget {
     final cubit = context.read<SettingsCubit>();
     final state = context.watch<SettingsCubit>().state;
     final appLocal = AppLocalizations.of(context)!;
+    cubit.loadSettings();
     return Scaffold(
       appBar: AppBar(
         title: Text(appLocal.translate(LangKeys.settings)!),
