@@ -16,23 +16,11 @@ class ColorPaletteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      width: double.infinity,
-      child: ListView.separated(
-        shrinkWrap: true,
-        itemCount: color.length,
-        scrollDirection: Axis.horizontal,
-        separatorBuilder: (context, index) => const SizedBox(width: 20),
-        itemBuilder: (context, index) {
-          return BuildCircleColorWidget(
-            color: color[index],
-            isSelected: state.colors == ColorsState.values[index],
-            onTap: () {
-              cubit.setColors(ColorsState.values[index]);
-            },
-          );
-        },
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: List.generate(
+        color.length,
+        (index) => BuildCircleColorWidget(index: index),
       ),
     );
   }
