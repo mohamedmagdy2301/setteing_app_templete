@@ -6,9 +6,9 @@ import 'package:theming_app_templete/cubit/settings_cubit.dart';
 
 class AppColorSchemes {
   static ColorScheme getColorScheme(
-      ColorsState color, ThemeModeState themeMode) {
+      ColorsPalleteState color, ThemeModeState themeMode) {
     switch (color) {
-      case ColorsState.orange:
+      case ColorsPalleteState.orange:
         return themeMode == ThemeModeState.light
             ? _buildColorScheme(
                 primary: ColorsLight.primaryColor,
@@ -27,7 +27,7 @@ class AppColorSchemes {
                 brightness: Brightness.dark,
               );
 
-      case ColorsState.blue:
+      case ColorsPalleteState.blue:
         return themeMode == ThemeModeState.light
             ? _buildColorScheme(
                 primary: ColorsLightBlue.primaryColor,
@@ -45,7 +45,7 @@ class AppColorSchemes {
                 textColor: ColorsDarkBlue.textColor,
                 brightness: Brightness.dark,
               );
-      case ColorsState.green:
+      case ColorsPalleteState.green:
         return themeMode == ThemeModeState.light
             ? _buildColorScheme(
                 primary: ColorsLightGreen.primaryColor,
@@ -63,7 +63,7 @@ class AppColorSchemes {
                 textColor: ColorsDarkGreen.textColor,
                 brightness: Brightness.dark,
               );
-      case ColorsState.red:
+      case ColorsPalleteState.red:
         return themeMode == ThemeModeState.light
             ? _buildColorScheme(
                 primary: ColorsLightRed.primaryColor,
@@ -85,27 +85,27 @@ class AppColorSchemes {
   }
 
   static ThemeExtension<MyColors> getExtension(
-      {required ColorsState color, required ThemeModeState themeMode}) {
+      {required ColorsPalleteState color, required ThemeModeState themeMode}) {
     if (themeMode == ThemeModeState.dark) {
       switch (color) {
-        case ColorsState.blue:
+        case ColorsPalleteState.blue:
           return MyColors.darkBlue;
-        case ColorsState.green:
+        case ColorsPalleteState.green:
           return MyColors.darkGreen;
-        case ColorsState.red:
+        case ColorsPalleteState.red:
           return MyColors.darkRed;
-        case ColorsState.orange:
+        case ColorsPalleteState.orange:
           return MyColors.dark;
       }
     }
     switch (color) {
-      case ColorsState.blue:
+      case ColorsPalleteState.blue:
         return MyColors.lightBlue;
-      case ColorsState.green:
+      case ColorsPalleteState.green:
         return MyColors.lightGreen;
-      case ColorsState.red:
+      case ColorsPalleteState.red:
         return MyColors.lightRed;
-      case ColorsState.orange:
+      case ColorsPalleteState.orange:
         return MyColors.light;
     }
   }

@@ -4,7 +4,8 @@ import 'package:theming_app_templete/cubit/settings_cubit.dart';
 import 'app_color_schemes.dart';
 
 class AppTheme {
-  static ThemeData getTheme(ColorsState color, ThemeModeState themeMode) {
+  static ThemeData getTheme(
+      ColorsPalleteState color, ThemeModeState themeMode) {
     final colorScheme = AppColorSchemes.getColorScheme(color, themeMode);
     final extension =
         AppColorSchemes.getExtension(color: color, themeMode: themeMode);

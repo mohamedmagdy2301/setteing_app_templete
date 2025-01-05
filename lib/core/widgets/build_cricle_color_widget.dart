@@ -16,12 +16,12 @@ class BuildCircleColorWidget extends StatelessWidget {
     final cubit = context.read<SettingsCubit>();
     final state = context.watch<SettingsCubit>().state;
     return GestureDetector(
-      onTap: () => cubit.setColors(ColorsState.values[index]),
+      onTap: () => cubit.setColors(ColorsPalleteState.values[index]),
       child: Container(
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: state.colors == ColorsState.values[index]
+          border: state.colors == ColorsPalleteState.values[index]
               ? Border.all(color: color[index], width: 3)
               : null,
         ),

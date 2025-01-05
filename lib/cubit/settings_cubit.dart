@@ -3,29 +3,30 @@ import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:theming_app_templete/core/utils/key_constant.dart';
 import 'package:theming_app_templete/cubit/settings_state.dart';
 
 enum ThemeModeState { light, dark, system }
 
 enum LocaleState { ar, en, system }
 
-enum ColorsState { orange, blue, green, red }
+enum ColorsPalleteState { orange, blue, green, red }
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit()
       : super(SettingsState(
           themeMode: ThemeModeState.system,
           locale: LocaleState.system,
-          colors: ColorsState.blue,
+          colors: ColorsPalleteState.blue,
         )) {
     loadSettings();
   }
 
   Future<void> loadSettings() async {
     final prefs = await SharedPreferences.getInstance();
-    final theme = prefs.getString('theme') ?? 'system';
-    final locale = prefs.getString('locale') ?? 'system';
-    final colors = prefs.getString('colors') ?? 'orange';
+    final theme = prefs.getString(keyTheme) ?? 'system';
+    final locale = prefs.getString(keyLocale) ?? 'system';
+    final colors = prefs.getString(keyColors) ?? 'orange';
 
     emit(SettingsState(
       themeMode: _getThemeStateFromString(theme),
@@ -34,8 +35,8 @@ class SettingsCubit extends Cubit<SettingsState> {
     ));
   }
 
-  Future<void> setColors(ColorsState colors) async {
-    await _setPreference('colors', _getColorsStateToString(colors));
+  Future<void> setColors(ColorsPalleteState colors) async {
+    await _setPreference(keyColors, _getColorsStateToString(colors));
     emit(SettingsState(
       themeMode: state.themeMode,
       locale: state.locale,
@@ -43,25 +44,25 @@ class SettingsCubit extends Cubit<SettingsState> {
     ));
   }
 
-  ColorsState _getColorsStateFromString(String colors) {
+  ColorsPalleteState _getColorsStateFromString(String colors) {
     switch (colors) {
       case 'blue':
-        return ColorsState.blue;
+        return ColorsPalleteState.blue;
       case 'red':
-        return ColorsState.red;
+        return ColorsPalleteState.red;
       case 'green':
-        return ColorsState.green;
+        return ColorsPalleteState.green;
       default:
-        return ColorsState.orange;
+        return ColorsPalleteState.orange;
     }
   }
 
-  String _getColorsStateToString(ColorsState state) {
+  String _getColorsStateToString(ColorsPalleteState state) {
     return state.toString().split('.').last;
   }
 
   Future<void> setTheme(ThemeModeState themeMode) async {
-    await _setPreference('theme', _getThemeStateToString(themeMode));
+    await _setPreference(keyTheme, _getThemeStateToString(themeMode));
     emit(SettingsState(
       themeMode: themeMode,
       locale: state.locale,
@@ -70,7 +71,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   Future<void> setLocale(LocaleState locale) async {
-    await _setPreference('locale', _getLocaleStateToString(locale));
+    await _setPreference(keyLocale, _getLocaleStateToString(locale));
     emit(SettingsState(
       themeMode: state.themeMode,
       locale: locale,
@@ -95,7 +96,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   String _getThemeStateToString(ThemeModeState state) {
-    return state.toString().split('.').last; // Simplified string conversion
+    return state.toString().split('.').last;
   }
 
   LocaleState _getLocaleStateFromString(String locale) {
@@ -110,7 +111,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   String _getLocaleStateToString(LocaleState state) {
-    return state.toString().split('.').last; // Simplified string conversion
+    return state.toString().split('.').last;
   }
 
   Locale _getSystemLocale() {
