@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:theming_app_templete/core/themes/list_colors.dart';
+import 'package:theming_app_templete/core/themes/theme_palette_model.dart';
 import 'package:theming_app_templete/core/widgets/build_cricle_color_widget.dart';
 
 class ColorPaletteWidget extends StatelessWidget {
@@ -10,7 +10,7 @@ class ColorPaletteWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(
-        color.length,
+        colorPalette.length,
         (index) => BuildCircleColorWidget(index: index),
       ),
     );
