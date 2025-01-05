@@ -21,16 +21,21 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           final cubit = context.read<SettingsCubit>();
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: _getThemeMode(state.themeMode),
-            locale: cubit.getLocaleFromState(state.locale),
-            supportedLocales: AppLocalSetup.supportedLocales,
-            localeResolutionCallback: AppLocalSetup.localeResolutionCallback,
-            localizationsDelegates: AppLocalSetup.localesDelegates,
-            home: const SettingsScreen(),
+          return BlocBuilder<SettingsCubit, SettingsState>(
+            builder: (context, state) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.getTheme(state.colors, state.themeMode),
+                darkTheme: AppTheme.getTheme(state.colors, state.themeMode),
+                themeMode: _getThemeMode(state.themeMode),
+                locale: cubit.getLocaleFromState(state.locale),
+                supportedLocales: AppLocalSetup.supportedLocales,
+                localeResolutionCallback:
+                    AppLocalSetup.localeResolutionCallback,
+                localizationsDelegates: AppLocalSetup.localesDelegates,
+                home: const SettingsScreen(),
+              );
+            },
           );
         },
       ),

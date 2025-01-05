@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-List colorLight = [
-  Colors.lightBlue,
-  Colors.deepOrange,
-  Colors.cyan,
-  Colors.indigo
+List color = [
+  Colors.orange,
+  Colors.blue,
+  Colors.green,
+  Colors.red,
 ];

@@ -1,52 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:theming_app_templete/core/themes/color_extension.dart';
-import 'package:theming_app_templete/core/themes/colors_dark.dart';
-import 'package:theming_app_templete/core/themes/colors_light.dart';
+import 'package:theming_app_templete/features/settings/presentation/cubit/settings_cubit.dart';
+
+import 'app_color_schemes.dart';
 
 class AppTheme {
-  // Light Theme
-  static final ThemeData lightTheme = _createTheme(
-    colorScheme: ColorScheme(
-      primary: ColorsLight.primaryColor,
-      secondary: ColorsLight.accentColor,
-      surface: ColorsLight.backgroundColor,
-      error: ColorsLight.errorColor,
-      onPrimary: Colors.white,
-      onSecondary: Colors.black,
-      onSurface: ColorsLight.textColor,
-      onError: Colors.white,
-      brightness: Brightness.light,
-    ),
-    extensions: <ThemeExtension<dynamic>>[MyColors.light],
-  );
-
-  // Dark Theme
-  static final ThemeData darkTheme = _createTheme(
-    colorScheme: ColorScheme(
-      primary: ColorsDark.primaryColor,
-      secondary: ColorsDark.accentColor,
-      surface: ColorsDark.backgroundColor,
-      error: ColorsDark.errorColor,
-      onPrimary: Colors.white,
-      onSecondary: Colors.white,
-      onSurface: ColorsDark.textColor,
-      onError: Colors.white,
-      brightness: Brightness.dark,
-    ),
-    extensions: <ThemeExtension<dynamic>>[MyColors.dark],
-  );
-
-  // Base Theme Creator
-  static ThemeData _createTheme({
-    required ColorScheme colorScheme,
-    required List<ThemeExtension<dynamic>>? extensions,
-  }) {
+  static ThemeData getTheme(ColorsState color, ThemeModeState themeMode) {
+    final colorScheme = AppColorSchemes.getColorScheme(color, themeMode);
+    final extension =
+        AppColorSchemes.getExtension(color: color, themeMode: themeMode);
     return ThemeData(
-      extensions: extensions,
       colorScheme: colorScheme,
+      extensions: [extension],
       primaryColor: colorScheme.primary,
       scaffoldBackgroundColor: colorScheme.surface,
       useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
+      ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
   }

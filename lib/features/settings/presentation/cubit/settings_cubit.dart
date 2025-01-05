@@ -9,11 +9,14 @@ enum ThemeModeState { light, dark, system }
 
 enum LocaleState { ar, en, system }
 
+enum ColorsState { orange, blue, red, green }
+
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit()
       : super(SettingsState(
           themeMode: ThemeModeState.system,
           locale: LocaleState.system,
+          colors: ColorsState.blue,
         )) {
     loadSettings();
   }
@@ -22,11 +25,48 @@ class SettingsCubit extends Cubit<SettingsState> {
     final prefs = await SharedPreferences.getInstance();
     final theme = prefs.getString('theme') ?? 'system';
     final locale = prefs.getString('locale') ?? 'system';
+    final colors = prefs.getString('colors') ?? 'orange';
 
     emit(SettingsState(
       themeMode: _getThemeStateFromString(theme),
       locale: _getLocaleStateFromString(locale),
+      colors: _getColorsStateFromString(colors),
     ));
+  }
+
+  Future<void> setColors(ColorsState colors) async {
+    await _setPreference('colors', _getColorsStateToString(colors));
+    emit(SettingsState(
+      themeMode: state.themeMode,
+      locale: state.locale,
+      colors: colors,
+    ));
+  }
+
+  ColorsState _getColorsStateFromString(String colors) {
+    switch (colors) {
+      case 'blue':
+        return ColorsState.blue;
+      case 'red':
+        return ColorsState.red;
+      case 'green':
+        return ColorsState.green;
+      default:
+        return ColorsState.orange;
+    }
+  }
+
+  String _getColorsStateToString(ColorsState state) {
+    switch (state) {
+      case ColorsState.blue:
+        return 'blue';
+      case ColorsState.red:
+        return 'red';
+      case ColorsState.green:
+        return 'green';
+      case ColorsState.orange:
+        return 'orange';
+    }
   }
 
   Future<void> setTheme(ThemeModeState themeMode) async {
@@ -34,6 +74,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(SettingsState(
       themeMode: themeMode,
       locale: state.locale,
+      colors: state.colors,
     ));
   }
 
@@ -42,6 +83,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(SettingsState(
       themeMode: state.themeMode,
       locale: locale,
+      colors: state.colors,
     ));
   }
 
