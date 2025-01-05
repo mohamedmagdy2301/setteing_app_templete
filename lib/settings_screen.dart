@@ -18,63 +18,84 @@ class SettingsScreen extends StatelessWidget {
       body: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           final cubit = context.read<SettingsCubit>();
-
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(appLocal.translate(LangKeys.theme)!,
-                    style: TextStyle(fontSize: 18)),
+              _buildSectionTitle(appLocal, LangKeys.theme),
+              _buildRadioListTile(
+                context,
+                state.themeMode,
+                (theme) => cubit.setTheme(theme!),
+                LangKeys.light,
+                ThemeModeState.light,
               ),
-              RadioListTile<ThemeModeState>(
-                title: Text(
-                  appLocal.translate(LangKeys.light)!,
-                ),
-                value: ThemeModeState.light,
-                groupValue: state.themeMode,
-                onChanged: (value) => cubit.setTheme(value!),
+              _buildRadioListTile(
+                context,
+                state.themeMode,
+                (theme) => cubit.setTheme(theme!),
+                LangKeys.dark,
+                ThemeModeState.dark,
               ),
-              RadioListTile<ThemeModeState>(
-                title: Text(appLocal.translate(LangKeys.dark)!),
-                value: ThemeModeState.dark,
-                groupValue: state.themeMode,
-                onChanged: (value) => cubit.setTheme(value!),
-              ),
-              RadioListTile<ThemeModeState>(
-                title: Text(appLocal.translate(LangKeys.systemDefault)!),
-                value: ThemeModeState.system,
-                groupValue: state.themeMode,
-                onChanged: (value) => cubit.setTheme(value!),
+              _buildRadioListTile(
+                context,
+                state.themeMode,
+                (theme) => cubit.setTheme(theme!),
+                LangKeys.systemDefault,
+                ThemeModeState.system,
               ),
               const Divider(),
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(appLocal.translate(LangKeys.language)!,
-                    style: TextStyle(fontSize: 18)),
+              _buildSectionTitle(appLocal, LangKeys.language),
+              _buildRadioListTile(
+                context,
+                state.locale,
+                (locale) => cubit.setLocale(locale!),
+                LangKeys.english,
+                LocaleState.en,
               ),
-              RadioListTile<LocaleState>(
-                title: Text(appLocal.translate(LangKeys.english)!),
-                value: LocaleState.en,
-                groupValue: state.locale,
-                onChanged: (value) => cubit.setLocale(value!),
+              _buildRadioListTile(
+                context,
+                state.locale,
+                (locale) => cubit.setLocale(locale!),
+                LangKeys.arabic,
+                LocaleState.ar,
               ),
-              RadioListTile<LocaleState>(
-                title: Text(appLocal.translate(LangKeys.arabic)!),
-                value: LocaleState.ar,
-                groupValue: state.locale,
-                onChanged: (value) => cubit.setLocale(value!),
-              ),
-              RadioListTile<LocaleState>(
-                title: Text(appLocal.translate(LangKeys.systemDefault)!),
-                value: LocaleState.system,
-                groupValue: state.locale,
-                onChanged: (value) => cubit.setLocale(value!),
+              _buildRadioListTile(
+                context,
+                state.locale,
+                (locale) => cubit.setLocale(locale!),
+                LangKeys.systemDefault,
+                LocaleState.system,
               ),
             ],
           );
         },
       ),
+    );
+  }
+
+  Padding _buildSectionTitle(AppLocalizations appLocal, String key) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Text(
+        appLocal.translate(key)!,
+        style: const TextStyle(fontSize: 18),
+      ),
+    );
+  }
+
+  RadioListTile<T> _buildRadioListTile<T>(
+    BuildContext context,
+    T groupValue,
+    void Function(T?) onChanged,
+    String labelKey,
+    T value,
+  ) {
+    final appLocal = AppLocalizations.of(context)!;
+    return RadioListTile<T>(
+      title: Text(appLocal.translate(labelKey)!),
+      value: value,
+      groupValue: groupValue,
+      onChanged: onChanged,
     );
   }
 }

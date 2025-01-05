@@ -98,27 +98,4 @@ class SettingsCubit extends Cubit<SettingsState> {
         return 'system';
     }
   }
-
-  // Locale _getLocaleFromState(LocaleState state) {
-  //   switch (state) {
-  //     case LocaleState.ar:
-  //       return const Locale('ar');
-  //     case LocaleState.en:
-  //       return const Locale('en');
-  //     case LocaleState.system:
-  //       return WidgetsBinding.instance.window.locale; // لغة النظام الافتراضية
-  //   }
-  // }
-
-  // ThemeMode _getThemeModeFromState(ThemeModeState state) {
-  //   switch (state) {
-  //     case ThemeModeState.light:
-  //       return ThemeMode.light;
-  //     case ThemeModeState.dark:
-  //       return ThemeMode.dark;
-  //     case ThemeModeState.system:
-  //     default:
-  //       return ThemeMode.system;
-  //   }
-  // }
 }
