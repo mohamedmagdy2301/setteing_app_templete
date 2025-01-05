@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:theming_app_templete/language/app_localizations_setup.dart';
 
-import 'theme_cubit.dart';
-import 'theme_selector.dart';
+import 'settings_cubit.dart';
+import 'settings_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,30 +15,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ThemeCubit(),
-      child: BlocBuilder<ThemeCubit, ThemeModeState>(
-        builder: (context, themeState) {
+      create: (context) => SettingsCubit(),
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Theme Selector',
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
-            themeMode: _getThemeMode(themeState),
-            home: ThemeSelector(),
+            themeMode: state.themeMode == ThemeModeState.system
+                ? ThemeMode.system
+                : (state.themeMode == ThemeModeState.light
+                    ? ThemeMode.light
+                    : ThemeMode.dark),
+            locale: state.locale == LocaleState.system
+                ? WidgetsBinding.instance.window.locale
+                : (state.locale == LocaleState.ar
+                    ? const Locale('ar')
+                    : const Locale('en')),
+            supportedLocales: AppLocalSetup.supportedLocales,
+            localeResolutionCallback: AppLocalSetup.localeResolutionCallback,
+            localizationsDelegates: AppLocalSetup.localesDelegates,
+            home: const SettingsScreen(),
           );
         },
       ),
     );
-  }
-
-  ThemeMode _getThemeMode(ThemeModeState state) {
-    switch (state) {
-      case ThemeModeState.light:
-        return ThemeMode.light;
-      case ThemeModeState.dark:
-        return ThemeMode.dark;
-      case ThemeModeState.system:
-        return ThemeMode.system;
-    }
   }
 }
