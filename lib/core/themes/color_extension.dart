@@ -22,7 +22,7 @@ class MyColors extends ThemeExtension<MyColors> {
   }
 }
 
-const themeExtensions = {
+const Map<ThemeModeState, Map<ColorsPalleteState, MyColors>> themeExtensions = {
   ThemeModeState.light: {
     ColorsPalleteState.orange: MyColors(primaryColor: Colors.orange),
     ColorsPalleteState.blue: MyColors(primaryColor: Colors.blue),
@@ -32,6 +32,14 @@ const themeExtensions = {
     ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
   },
   ThemeModeState.dark: {
+    ColorsPalleteState.orange: MyColors(primaryColor: Colors.orange),
+    ColorsPalleteState.blue: MyColors(primaryColor: Colors.blue),
+    ColorsPalleteState.green: MyColors(primaryColor: Colors.green),
+    ColorsPalleteState.red: MyColors(primaryColor: Colors.red),
+    ColorsPalleteState.indigo: MyColors(primaryColor: Colors.indigo),
+    ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
+  },
+  ThemeModeState.system: {
     ColorsPalleteState.orange: MyColors(primaryColor: Colors.orange),
     ColorsPalleteState.blue: MyColors(primaryColor: Colors.blue),
     ColorsPalleteState.green: MyColors(primaryColor: Colors.green),

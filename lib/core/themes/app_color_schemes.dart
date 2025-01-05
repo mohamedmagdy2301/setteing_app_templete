@@ -1,18 +1,19 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:theming_app_templete/core/themes/colors_dark.dart';
 import 'package:theming_app_templete/core/themes/colors_light.dart';
+import 'package:theming_app_templete/core/themes/theme_palette_model.dart';
 import 'package:theming_app_templete/cubit/settings_cubit.dart';
 
 class AppColorSchemes {
   static ColorScheme generateColorScheme(
       {required ColorsPalleteState palette,
       required ThemeModeState themeMode}) {
-    final paletteData = themeMode == ThemeModeState.light
-        ? lightPalettes[palette]
-        : darkPalettes[palette];
+    final paletteData = getPaletteData(themeMode, palette)!;
 
     return ColorScheme(
-      primary: paletteData!.primary,
+      primary: paletteData.primary,
       secondary: paletteData.secondary,
       surface: paletteData.background,
       error: paletteData.error,
@@ -25,5 +26,19 @@ class AppColorSchemes {
           ? Brightness.light
           : Brightness.dark,
     );
+  }
+
+  static ThemePaletteModel? getPaletteData(
+      ThemeModeState themeMode, ColorsPalleteState palette) {
+    switch (themeMode) {
+      case ThemeModeState.light:
+        return lightPalettes[palette];
+      case ThemeModeState.dark:
+        return darkPalettes[palette];
+      default:
+        return PlatformDispatcher.instance.platformBrightness == Brightness.dark
+            ? darkPalettes[palette]
+            : lightPalettes[palette];
+    }
   }
 }

@@ -8,13 +8,11 @@ class AppTheme {
       ColorsPalleteState palette, ThemeModeState themeMode) {
     final colorScheme = AppColorSchemes.generateColorScheme(
         palette: palette, themeMode: themeMode);
-    final extension = themeExtensions[themeMode == ThemeModeState.light
-        ? ThemeModeState.light
-        : ThemeModeState.dark]?[palette];
+    final extension = themeExtensions[themeMode]![palette];
 
     return ThemeData(
       colorScheme: colorScheme,
-      extensions: [if (extension != null) extension],
+      extensions: [extension!],
       primaryColor: colorScheme.primary,
       scaffoldBackgroundColor: colorScheme.surface,
       useMaterial3: true,
