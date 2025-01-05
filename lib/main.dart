@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:theming_app_templete/language/app_localizations_setup.dart';
+import 'package:theming_app_templete/core/language/app_localizations_setup.dart';
+import 'package:theming_app_templete/core/themes/app_theme.dart';
 import 'package:theming_app_templete/settings_state.dart';
 
 import 'settings_cubit.dart';
@@ -20,11 +21,10 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           final cubit = context.read<SettingsCubit>();
-
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.dark(),
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
             themeMode: _getThemeMode(state.themeMode),
             locale: cubit.getLocaleFromState(state.locale),
             supportedLocales: AppLocalSetup.supportedLocales,

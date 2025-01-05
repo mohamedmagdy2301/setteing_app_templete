@@ -16,7 +16,6 @@ class SettingsCubit extends Cubit<SettingsState> {
           locale: LocaleState.system,
         )) {
     loadSettings();
-    // _listenToLocaleChanges();
   }
 
   Future<void> loadSettings() async {
@@ -29,20 +28,6 @@ class SettingsCubit extends Cubit<SettingsState> {
       locale: _getLocaleStateFromString(locale),
     ));
   }
-
-  // void _listenToLocaleChanges() {
-  //   PlatformDispatcher.instance.onLocaleChanged = _handleLocaleChange;
-  // }
-
-  // void _handleLocaleChange() {
-  //   final newLocale = _getSystemLocale();
-  //   if (state.locale == LocaleState.system) {
-  //     emit(SettingsState(
-  //       themeMode: state.themeMode,
-  //       locale: _getLocaleStateFromString(newLocale.languageCode),
-  //     ));
-  //   }
-  // }
 
   Future<void> setTheme(ThemeModeState themeMode) async {
     await _setPreference('theme', _getThemeStateToString(themeMode));

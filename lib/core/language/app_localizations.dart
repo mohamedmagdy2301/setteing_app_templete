@@ -2,7 +2,7 @@ import 'dart:convert' show json;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:theming_app_templete/language/app_localizations_delegate.dart';
+import 'package:theming_app_templete/core/language/app_localizations_delegate.dart';
 
 class AppLocalizations {
   AppLocalizations(this.locale);

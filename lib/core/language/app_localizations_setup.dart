@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:theming_app_templete/language/app_localizations.dart';
+import 'package:theming_app_templete/core/language/app_localizations.dart';
 
 class AppLocalSetup {
   static const Iterable<Locale> supportedLocales = [
