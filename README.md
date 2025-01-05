@@ -5,7 +5,7 @@
 
 </div>
 
-# Settings (Theming and Localization) Flutter App Template
+## Settings (Theming & Color Pallete and Localization) Flutter App Template
 
 This Flutter app demonstrates how to implement **dynamic theming** and **localization** using the **BLoC** state management library and **SharedPreferences** for persistent storage. Users can switch between light, dark, and system themes, as well as select their preferred app language.
 
