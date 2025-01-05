@@ -19,6 +19,7 @@ class SettingsScreen extends StatelessWidget {
       body: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           final cubit = context.read<SettingsCubit>();
+          cubit.loadSettings();
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -15,11 +15,11 @@ class SettingsCubit extends Cubit<SettingsState> {
           themeMode: ThemeModeState.system,
           locale: LocaleState.system,
         )) {
-    _loadSettings();
+    loadSettings();
     // _listenToLocaleChanges();
   }
 
-  Future<void> _loadSettings() async {
+  Future<void> loadSettings() async {
     final prefs = await SharedPreferences.getInstance();
     final theme = prefs.getString('theme') ?? 'system';
     final locale = prefs.getString('locale') ?? 'system';
