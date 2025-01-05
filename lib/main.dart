@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theming_app_templete/core/language/app_localizations_setup.dart';
 import 'package:theming_app_templete/core/themes/app_theme.dart';
-import 'package:theming_app_templete/settings_state.dart';
+import 'package:theming_app_templete/features/settings/presentation/cubit/settings_state.dart';
 
-import 'settings_cubit.dart';
-import 'settings_screen.dart';
+import 'features/settings/presentation/cubit/settings_cubit.dart';
+import 'features/settings/presentation/pages/settings_screen.dart';
 
 void main() {
   runApp(const MyApp());
