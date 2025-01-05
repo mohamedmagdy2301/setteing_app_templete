@@ -1,0 +1,8 @@
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "mego1.jpg"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "mego1.jpg"
+  min_sdk_android: 21
