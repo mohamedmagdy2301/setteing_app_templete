@@ -31,11 +31,11 @@ class MyColors extends ThemeExtension<MyColors> {
     );
   }
 
-  static MyColors dark = const MyColors(
+  static MyColors dark = MyColors(
     primaryColor: ColorsDark.primaryColor,
   );
 
-  static MyColors light = const MyColors(
+  static MyColors light = MyColors(
     primaryColor: ColorsLight.primaryColor,
   );
 }

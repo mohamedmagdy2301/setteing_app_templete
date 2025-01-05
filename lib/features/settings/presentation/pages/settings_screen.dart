@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theming_app_templete/core/language/app_localizations.dart';
 import 'package:theming_app_templete/core/language/lang_keys.dart';
 import 'package:theming_app_templete/features/settings/presentation/cubit/settings_state.dart';
-import 'package:theming_app_templete/features/settings/presentation/widgets/build_radio_listtile.dart';
-import 'package:theming_app_templete/features/settings/presentation/widgets/build_section_title.dart';
+import 'package:theming_app_templete/features/settings/presentation/widgets/localize_widget.dart';
+import 'package:theming_app_templete/features/settings/presentation/widgets/theme_widget.dart';
 
 import '../cubit/settings_cubit.dart';
 
@@ -25,45 +25,10 @@ class SettingsScreen extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BuildSectionTitle(title: LangKeys.theme),
-              BuildRadioListTile<ThemeModeState>(
-                labelKey: LangKeys.light,
-                value: ThemeModeState.light,
-                groupValue: state.themeMode,
-                onChanged: (theme) => cubit.setTheme(theme!),
-              ),
-              BuildRadioListTile<ThemeModeState>(
-                labelKey: LangKeys.dark,
-                value: ThemeModeState.dark,
-                groupValue: state.themeMode,
-                onChanged: (theme) => cubit.setTheme(theme!),
-              ),
-              BuildRadioListTile<ThemeModeState>(
-                labelKey: LangKeys.systemDefault,
-                value: ThemeModeState.system,
-                groupValue: state.themeMode,
-                onChanged: (theme) => cubit.setTheme(theme!),
-              ),
+              ThemeWidget(cubit: cubit, state: state),
               const Divider(),
-              BuildSectionTitle(title: LangKeys.language),
-              BuildRadioListTile<LocaleState>(
-                labelKey: LangKeys.english,
-                value: LocaleState.en,
-                groupValue: state.locale,
-                onChanged: (locale) => cubit.setLocale(locale!),
-              ),
-              BuildRadioListTile<LocaleState>(
-                labelKey: LangKeys.arabic,
-                value: LocaleState.ar,
-                groupValue: state.locale,
-                onChanged: (locale) => cubit.setLocale(locale!),
-              ),
-              BuildRadioListTile<LocaleState>(
-                labelKey: LangKeys.systemDefault,
-                value: LocaleState.system,
-                groupValue: state.locale,
-                onChanged: (locale) => cubit.setLocale(locale!),
-              ),
+              LocalizeWidget(cubit: cubit, state: state),
+              // const
             ],
           );
         },

@@ -6,7 +6,7 @@ import 'package:theming_app_templete/core/themes/colors_light.dart';
 class AppTheme {
   // Light Theme
   static final ThemeData lightTheme = _createTheme(
-    colorScheme: const ColorScheme(
+    colorScheme: ColorScheme(
       primary: ColorsLight.primaryColor,
       secondary: ColorsLight.accentColor,
       surface: ColorsLight.backgroundColor,
@@ -22,7 +22,7 @@ class AppTheme {
 
   // Dark Theme
   static final ThemeData darkTheme = _createTheme(
-    colorScheme: const ColorScheme(
+    colorScheme: ColorScheme(
       primary: ColorsDark.primaryColor,
       secondary: ColorsDark.accentColor,
       surface: ColorsDark.backgroundColor,
