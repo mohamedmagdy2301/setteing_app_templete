@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:theming_app_templete/core/language/lang_keys.dart';
 import 'package:theming_app_templete/core/widgets/build_radio_listtile.dart';
 import 'package:theming_app_templete/core/widgets/build_section_title.dart';
-import 'package:theming_app_templete/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:theming_app_templete/features/settings/presentation/cubit/settings_state.dart';
+import 'package:theming_app_templete/features/cubit/settings_cubit.dart';
+import 'package:theming_app_templete/features/cubit/settings_state.dart';
 
 class ThemeWidget extends StatelessWidget {
   const ThemeWidget({super.key, required this.cubit, required this.state});

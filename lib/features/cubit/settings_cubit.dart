@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:theming_app_templete/features/settings/presentation/cubit/settings_state.dart';
+import 'package:theming_app_templete/features/cubit/settings_state.dart';
 
 enum ThemeModeState { light, dark, system }
 

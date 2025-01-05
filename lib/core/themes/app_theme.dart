@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:theming_app_templete/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:theming_app_templete/features/cubit/settings_cubit.dart';
 
 import 'app_color_schemes.dart';
 

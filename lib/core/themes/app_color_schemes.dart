@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:theming_app_templete/core/themes/color_extension.dart';
 import 'package:theming_app_templete/core/themes/colors_dark.dart';
 import 'package:theming_app_templete/core/themes/colors_light.dart';
-import 'package:theming_app_templete/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:theming_app_templete/features/cubit/settings_cubit.dart';
 
 class AppColorSchemes {
   static ColorScheme getColorScheme(

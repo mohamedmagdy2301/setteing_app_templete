@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theming_app_templete/core/language/app_localizations.dart';
 import 'package:theming_app_templete/core/language/lang_keys.dart';
-import 'package:theming_app_templete/features/settings/presentation/widgets/colors_widget.dart';
-import 'package:theming_app_templete/features/settings/presentation/widgets/localize_widget.dart';
-import 'package:theming_app_templete/features/settings/presentation/widgets/theme_widget.dart';
+import 'package:theming_app_templete/features/widgets/colors_widget.dart';
+import 'package:theming_app_templete/features/widgets/localize_widget.dart';
+import 'package:theming_app_templete/features/widgets/theme_widget.dart';
 
 import '../cubit/settings_cubit.dart';
 
