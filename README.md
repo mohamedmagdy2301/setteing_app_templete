@@ -34,6 +34,14 @@ This Flutter app demonstrates how to implement **dynamic theming** and **localiz
 
 ---
 
+## Screenshots
+
+| System Default | English & Dark | Arabic & Light |
+|---|---|---|
+| ![Screenshot](Screenshot3.png) | ![Screenshot](Screenshot1.png) | ![Screenshot](Screenshot2.png)  |
+
+---
+
 ## Project Structure
 
 ```plaintext
