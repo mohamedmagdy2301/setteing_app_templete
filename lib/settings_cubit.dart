@@ -1,19 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:theming_app_templete/settings_state.dart';
 
 enum ThemeModeState { light, dark, system }
 
 enum LocaleState { ar, en, system }
-
-class SettingsState {
-  final ThemeModeState themeMode;
-  final LocaleState locale;
-
-  SettingsState({
-    required this.themeMode,
-    required this.locale,
-  });
-}
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit()
