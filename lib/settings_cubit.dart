@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:ui';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:theming_app_templete/settings_state.dart';
@@ -13,6 +16,7 @@ class SettingsCubit extends Cubit<SettingsState> {
           locale: LocaleState.system,
         )) {
     _loadSettings();
+    // _listenToLocaleChanges();
   }
 
   Future<void> _loadSettings() async {
@@ -26,9 +30,22 @@ class SettingsCubit extends Cubit<SettingsState> {
     ));
   }
 
+  // void _listenToLocaleChanges() {
+  //   PlatformDispatcher.instance.onLocaleChanged = _handleLocaleChange;
+  // }
+
+  // void _handleLocaleChange() {
+  //   final newLocale = _getSystemLocale();
+  //   if (state.locale == LocaleState.system) {
+  //     emit(SettingsState(
+  //       themeMode: state.themeMode,
+  //       locale: _getLocaleStateFromString(newLocale.languageCode),
+  //     ));
+  //   }
+  // }
+
   Future<void> setTheme(ThemeModeState themeMode) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('theme', _getThemeStateToString(themeMode));
+    await _setPreference('theme', _getThemeStateToString(themeMode));
     emit(SettingsState(
       themeMode: themeMode,
       locale: state.locale,
@@ -36,12 +53,16 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   Future<void> setLocale(LocaleState locale) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('locale', _getLocaleStateToString(locale));
+    await _setPreference('locale', _getLocaleStateToString(locale));
     emit(SettingsState(
       themeMode: state.themeMode,
       locale: locale,
     ));
+  }
+
+  Future<void> _setPreference(String key, String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
   }
 
   ThemeModeState _getThemeStateFromString(String theme) {
@@ -87,6 +108,28 @@ class SettingsCubit extends Cubit<SettingsState> {
         return 'en';
       case LocaleState.system:
         return 'system';
+    }
+  }
+
+  Locale _getSystemLocale() {
+    switch (Platform.localeName.split('_').first) {
+      case 'ar':
+        return const Locale('ar');
+      case 'en':
+        return const Locale('en');
+      default:
+        return const Locale('en');
+    }
+  }
+
+  Locale getLocaleFromState(LocaleState state) {
+    switch (state) {
+      case LocaleState.ar:
+        return const Locale('ar');
+      case LocaleState.en:
+        return const Locale('en');
+      case LocaleState.system:
+        return _getSystemLocale();
     }
   }
 }

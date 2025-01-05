@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theming_app_templete/language/app_localizations_setup.dart';
@@ -21,12 +19,14 @@ class MyApp extends StatelessWidget {
       create: (context) => SettingsCubit(),
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
+          final cubit = context.read<SettingsCubit>();
+
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
             themeMode: _getThemeMode(state.themeMode),
-            locale: _getLocale(state.locale),
+            locale: cubit.getLocaleFromState(state.locale),
             supportedLocales: AppLocalSetup.supportedLocales,
             localeResolutionCallback: AppLocalSetup.localeResolutionCallback,
             localizationsDelegates: AppLocalSetup.localesDelegates,
@@ -45,17 +45,6 @@ class MyApp extends StatelessWidget {
         return ThemeMode.dark;
       case ThemeModeState.system:
         return ThemeMode.system;
-    }
-  }
-
-  Locale _getLocale(LocaleState locale) {
-    switch (locale) {
-      case LocaleState.ar:
-        return const Locale('ar');
-      case LocaleState.en:
-        return const Locale('en');
-      case LocaleState.system:
-        return PlatformDispatcher.instance.locales.first;
     }
   }
 }
