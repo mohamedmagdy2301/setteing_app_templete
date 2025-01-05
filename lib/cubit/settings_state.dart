@@ -1,4 +1,4 @@
-import 'package:theming_app_templete/features/cubit/settings_cubit.dart';
+import 'package:theming_app_templete/cubit/settings_cubit.dart';
 
 class SettingsState {
   final ThemeModeState themeMode;

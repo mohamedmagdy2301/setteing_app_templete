@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:theming_app_templete/core/language/lang_keys.dart';
 import 'package:theming_app_templete/core/widgets/build_radio_listtile.dart';
 import 'package:theming_app_templete/core/widgets/build_section_title.dart';
-import 'package:theming_app_templete/features/cubit/settings_state.dart';
+import 'package:theming_app_templete/cubit/settings_state.dart';
 
 import '../cubit/settings_cubit.dart';
 
