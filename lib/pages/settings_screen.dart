@@ -28,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
           LocalizeWidget(cubit: cubit, state: state),
           const Divider(),
           SizedBox(height: 20),
-          ColorPaletteWidget(cubit: cubit, state: state),
+          ColorPaletteWidget(),
         ],
       ),
     );
