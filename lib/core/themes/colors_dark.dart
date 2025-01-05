@@ -35,7 +35,7 @@ class ColorsDarkRed {
 class ColorsDarkIndigo {
   static const Color primaryColor = Colors.indigo;
   static const Color accentColor = Colors.indigoAccent;
-  static const Color backgroundColor = Color(0xFFECECEC);
-  static const Color textColor = Color(0xFF2D2D2D);
-  static const Color errorColor = Color(0xFFE53935);
+  static const Color backgroundColor = Color(0xFF121212);
+  static const Color textColor = Color(0xFFFFCDD2);
+  static const Color errorColor = Color(0xFFEF5350);
 }
