@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theming_app_templete/core/language/app_localizations.dart';
 import 'package:theming_app_templete/core/language/lang_keys.dart';
-import 'package:theming_app_templete/widgets/colors_widget.dart';
+import 'package:theming_app_templete/widgets/colors_palette_widget.dart';
 import 'package:theming_app_templete/widgets/localize_widget.dart';
 import 'package:theming_app_templete/widgets/theme_widget.dart';
 
