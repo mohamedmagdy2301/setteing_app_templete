@@ -80,7 +80,7 @@ class AppColorSchemes {
                 textColor: ColorsDarkRed.textColor,
                 brightness: Brightness.dark,
               );
-      case ColorsPalleteState.yellow:
+      case ColorsPalleteState.indigo:
         return themeMode == ThemeModeState.light
             ? _buildColorScheme(
                 primary: ColorsLightIndigo.primaryColor,
@@ -111,8 +111,8 @@ class AppColorSchemes {
           return MyColors.darkGreen;
         case ColorsPalleteState.red:
           return MyColors.darkRed;
-        case ColorsPalleteState.yellow:
-          return MyColors.darkYellow;
+        case ColorsPalleteState.indigo:
+          return MyColors.darkIndigo;
         default:
           return MyColors.dark;
       }
@@ -124,8 +124,8 @@ class AppColorSchemes {
         return MyColors.lightGreen;
       case ColorsPalleteState.red:
         return MyColors.lightRed;
-      case ColorsPalleteState.yellow:
-        return MyColors.lightYellow;
+      case ColorsPalleteState.indigo:
+        return MyColors.lightIndigo;
       default:
         return MyColors.light;
     }

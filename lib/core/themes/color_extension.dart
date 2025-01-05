@@ -39,7 +39,7 @@ class MyColors extends ThemeExtension<MyColors> {
   static const MyColors lightRed = MyColors(
     primaryColor: ColorsLightRed.primaryColor,
   );
-  static const MyColors lightYellow = MyColors(
+  static const MyColors lightIndigo = MyColors(
     primaryColor: ColorsLightIndigo.primaryColor,
   );
 
@@ -56,7 +56,7 @@ class MyColors extends ThemeExtension<MyColors> {
   static const MyColors darkRed = MyColors(
     primaryColor: ColorsDarkRed.primaryColor,
   );
-  static const MyColors darkYellow = MyColors(
+  static const MyColors darkIndigo = MyColors(
     primaryColor: ColorsDarkIndigo.primaryColor,
   );
 }
