@@ -163,7 +163,7 @@ Update the `lightPalettes` and `darkPalettes` in the `ThemePalette` file to incl
 
 #### Light Palette
 ```dart
-ColorsPalleteState.purple: ThemePalette(
+ColorsPalleteState.purple: ThemePaletteModel(
   primary: Colors.purple,
   secondary: Colors.purpleAccent,
   background: Color(0xFFECECEC), // Adjust as needed
@@ -174,7 +174,7 @@ ColorsPalleteState.purple: ThemePalette(
 
 #### Dark Palette
 ```dart
-ColorsPalleteState.purple: ThemePalette(
+ColorsPalleteState.purple: ThemePaletteModel(
   primary: Colors.purple,
   secondary: Colors.purpleAccent,
   background: Color(0xFF121212), // Adjust as needed
