@@ -136,6 +136,27 @@ In the `settings_cubit.dart` file, update the `ColorsPalleteState` enum by addin
 ```dart
 enum ColorsPalleteState { orange, blue, green, red, indigo, purple }
 ```
+```dart
+
+  ColorsPalleteState _getColorsStateFromString(String colors) {
+    switch (colors) {
+      case 'blue':
+        return ColorsPalleteState.blue;
+      case 'red':
+        return ColorsPalleteState.red;
+      case 'green':
+        return ColorsPalleteState.green;
+      case 'indigo':
+        return ColorsPalleteState.indigo;
+      case 'orange':
+        return ColorsPalleteState.orange;
+      case 'purple':                        <--- Add This Line
+        return ColorsPalleteState.purple;   <--- Add This Line
+      default:
+        return ColorsPalleteState.orange;
+    }
+  }
+```
 
 ### 2. **Define the New Color in the Palettes**
 Update the `lightPalettes` and `darkPalettes` in the `ThemePalette` file to include the new color:
