@@ -199,7 +199,7 @@ ThemeModeState.dark: {
 ### 4. **Update the Color List**
 In the `list_colors.dart` file, add the new color to the `color` list:
 ```dart
-List color = [
+List<Color> colorPalette = [
   Colors.amber,
   Colors.blue,
   Colors.green,
