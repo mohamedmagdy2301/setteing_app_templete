@@ -69,6 +69,8 @@ The app allows users to select from the following colors for personalization. Th
 | **Blue**   | ![Blue](https://via.placeholder.com/20/007BFF?text=+)   | `#007BFF` |
 | **Green**  | ![Green](https://via.placeholder.com/20/28A745?text=+)  | `#28A745` |
 | **Red**    | ![Red](https://via.placeholder.com/20/DC3545?text=+)    | `#DC3545` |
+| **Indigo** | ![Indigo](https://via.placeholder.com/20/3F51B5?text=+) | `#3F51B5` |
+| **Purple** | ![Purple](https://via.placeholder.com/20/800080?text=+) | `#800080` |
 
 To customize these colors or add new ones, update the `list_colors.dart` file and the corresponding `ColorsState` in the `settings_cubit.dart`.
 
@@ -122,6 +124,74 @@ To customize these colors or add new ones, update the `list_colors.dart` file an
    - A language (English, Arabic, or System Default).
    - A color for personalization.
 4. Changes are applied immediately and persist across app launches.
+
+---
+ 
+## **Adding a New Color Palette**
+
+To add a new color palette to the application, follow these steps:
+
+### 1. **Add the New Color to the Enum**
+In the `settings_cubit.dart` file, update the `ColorsPalleteState` enum by adding the new color. For example:
+```dart
+enum ColorsPalleteState { orange, blue, green, red, indigo, purple }
+```
+
+### 2. **Define the New Color in the Palettes**
+Update the `lightPalettes` and `darkPalettes` in the `ThemePalette` file to include the new color:
+
+#### Light Palette
+```dart
+ColorsPalleteState.purple: ThemePalette(
+  primary: Colors.purple,
+  secondary: Colors.purpleAccent,
+  background: Color(0xFFECECEC), // Adjust as needed
+  text: Color(0xFF2D2D2D), // Adjust as needed
+  error: Color(0xFFE53935), // Adjust as needed
+),
+```
+
+#### Dark Palette
+```dart
+ColorsPalleteState.purple: ThemePalette(
+  primary: Colors.purple,
+  secondary: Colors.purpleAccent,
+  background: Color(0xFF121212), // Adjust as needed
+  text: Color(0xFFD1C4E9), // Adjust as needed
+  error: Color(0xFFEF5350), // Adjust as needed
+),
+```
+
+### 3. **Add the Color to the Theme Extensions**
+In the `themeExtensions` map, add an entry for the new color:
+```dart
+ThemeModeState.light: {
+  ...,
+  ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
+},
+ThemeModeState.dark: {
+  ...,
+  ColorsPalleteState.purple: MyColors(primaryColor: Colors.purple),
+},
+```
+
+### 4. **Update the Color List**
+In the `list_colors.dart` file, add the new color to the `color` list:
+```dart
+List color = [
+  Colors.amber,
+  Colors.blue,
+  Colors.green,
+  Colors.red,
+  Colors.indigo,
+  Colors.purple, // Add your new color
+];
+```
+
+### 5. **Test the Color**
+Run the application and verify:
+- The color is selectable in the palette widget.
+- The light and dark themes reflect the correct color scheme.
 
 ---
 
