@@ -44,30 +44,6 @@ This Flutter app demonstrates how to implement **dynamic theming** and **localiz
 | System Default | English & Dark | Arabic & Light |
 |---|---|---|
 | ![Screenshot](Screenshot3.png) | ![Screenshot](Screenshot1.png) | ![Screenshot](Screenshot2.png)  |
----
-
-## Project Structure
-
-```plaintext
-lib/
-├── core/
-│   ├── themes/
-│   │   └── list_colors.dart       # List of available colors for the app
-│   ├── widgets/
-│       └── build_circle_color_widget.dart # UI for color selection
-├── features/
-│   └── settings/
-│       ├── presentation/
-│       │   ├── cubit/
-│       │   │   ├── settings_cubit.dart  # Cubit for managing theme and locale settings
-│       │   │   ├── settings_state.dart  # State representation for SettingsCubit
-│       │   └── settings_screen.dart     # UI for settings screen
-├── language/
-│   ├── app_localizations.dart           # Localization helper
-│   ├── app_localizations_setup.dart     # Localization setup and configurations
-│   ├── lang_keys.dart                   # Keys for translatable strings
-└── main.dart                            # Main entry point of the app
-```
 
 ---
 
